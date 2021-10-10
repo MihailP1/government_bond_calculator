@@ -1,19 +1,36 @@
 
 let bondData;
-let bondIDs = [];
-// [bondId, bondDuration, bondYield, bondAccruedint, bondPrice]
+
+let bonds = [];
+// [bondId, bondMatDate, bondAccruedint, bondYield, bondPrice]
+
 function getBondData(stock){
     
     bondData = stock;
     console.log(stock);
     bondData.securities.data.forEach(element => {
         if(element[20].indexOf("ОФЗ-ПД") !== -1) {
-            bondIDs.push(element[0]);
+            bonds.push([element[0], element[13], element[7]]);
         }
         
     });
+
+    let marketData = bondData.marketdata.data;
+    for(let i = 0; i < bonds.length; i++) {
+        
+        for(let j = 0; j < marketData.length; j++) {
+            if(marketData[j][0] === bonds[i][0]) {
+                bonds[i][3] = marketData[j][16];
+                bonds[i][4] = marketData[j][11];
+                
+                break;
+            }
+        }
+        
+    }
     
-    console.log(bondIDs);
+    
+    console.log(bonds);
 }
 
 
