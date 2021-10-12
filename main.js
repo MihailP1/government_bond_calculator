@@ -2,7 +2,7 @@
 let bondData;
 
 let bonds = [];
-// [bondId, bondMatDate, bondAccruedint, bondYield, bondPrice]
+// [bondId, bondMatDate, bondAccruedint, bondYield, bondPrice, systemTime]
 
 function getBondData(stock){
     
@@ -22,6 +22,7 @@ function getBondData(stock){
             if(marketData[j][0] === bonds[i][0]) {
                 bonds[i][3] = marketData[j][16];
                 bonds[i][4] = marketData[j][11];
+                bonds[i][5] = marketData[j][52];
                 
                 break;
             }
@@ -29,6 +30,16 @@ function getBondData(stock){
         
     }
     
+    bonds.sort(function (a, b) {
+        if (a[1] > b[1]) {
+          return 1;
+        }
+        if (a[1] < b[1]) {
+          return -1;
+        }
+        // a должно быть равным b
+        return 0;
+      });
     
     console.log(bonds);
 }
@@ -47,4 +58,7 @@ function changeNum() {
     console.log(duration);
 }
 
+
+
+  
 
