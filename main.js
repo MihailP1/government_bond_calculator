@@ -4,8 +4,19 @@ let bondData;
 let bonds = [];
 // [bondId, bondMatDate, bondAccruedint, bondYield, bondPrice, systemTime]
 
-function getBondData(stock){
-    
+
+
+function getBondData() {
+    fetch('https://iss.moex.com/iss/engines/stock/markets/bonds/boards/tqob/securities.json')
+        .then(res=>res.json())
+        .then(res=>setBondData(res));
+}
+
+getBondData();
+
+
+function setBondData(stock){
+
     bondData = stock;
     console.log(stock);
     bondData.securities.data.forEach(element => {
@@ -32,30 +43,40 @@ function getBondData(stock){
     
     bonds.sort(function (a, b) {
         if (a[1] > b[1]) {
-          return 1;
+            return 1;
         }
         if (a[1] < b[1]) {
-          return -1;
+            return -1;
         }
-        // a должно быть равным b
+        
         return 0;
-      });
+        });
     
     console.log(bonds);
+
+    createSelect();
 }
 
-
-fetch('https://iss.moex.com/iss/engines/stock/markets/bonds/boards/tqob/securities.json')
-    .then(res=>res.json())
-    .then(res=>getBondData(res));
 
 
 let duration;
 
-function changeNum() {
-    let selectedOption = document.getElementById("duration").options.selectedIndex;
-    duration = document.getElementById("duration").options[selectedOption].value;
-    console.log(duration);
+function createSelect() {
+    let select = document.getElementById('mat_date')
+    for(let i = 0; i < bonds.length; i++) {
+        let option = document.createElement("option");
+        option.setAttribute('value', bonds[i][1]);
+        option.innerHTML = bonds[i][1];
+        select.appendChild(option);
+
+    }
+    console.log("select");
+}
+
+
+
+function changeBond() {
+    
 }
 
 
