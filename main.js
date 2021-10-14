@@ -62,21 +62,43 @@ function setBondData(stock){
 let duration;
 
 function createSelect() {
-    let select = document.getElementById('mat_date')
+    let select = document.getElementById('mat_date');
     for(let i = 0; i < bonds.length; i++) {
         let option = document.createElement("option");
-        option.setAttribute('value', bonds[i][1]);
+        option.setAttribute('value', i);
         option.innerHTML = bonds[i][1];
         select.appendChild(option);
 
     }
     console.log("select");
+    changeBond();
 }
 
 
 
 function changeBond() {
+
+    let selectedIndex = document.getElementById("mat_date").options.selectedIndex;
+    console.log(selectedIndex);
+
+    let id = document.getElementById("id");
+    if(id != null) id.remove();
+
+    let yield = document.getElementById("yield");
+    if(yield != null) yield.remove();
     
+
+    let bondId = document.getElementsByClassName("bondId");
+    id = document.createElement("p");
+    id.innerHTML = bonds[selectedIndex][0];
+    id.setAttribute('id', 'id');
+    bondId[0].appendChild(id);
+
+    let bondYield = document.getElementsByClassName("bondYield");
+    yield = document.createElement("p");
+    yield.innerHTML = bonds[selectedIndex][3];
+    yield.setAttribute('id', 'yield');
+    bondYield[0].appendChild(yield);
 }
 
 

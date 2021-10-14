@@ -19,12 +19,25 @@
 <body>
 	<h1></h1>
 	<p>Дата погашения:</p>
-	<select size="1" id="mat_date" onchange={changeBond()} >
-		
-		
-	</select>
+	<select size="1" id="mat_date" onchange={changeBond()}>	</select>
+	<div class="bond">
+		<div class="bondId">
+			<p>ID облигации:</p>
+		</div>
+		<div class="bondYield">
+			<p>Доходность:</p>
+		</div>
+		<div class="bondMatDate">
+			<p>Дата погашения:</p>
+		</div>
+		<div class="bondPrice">
+			<p>Цена:</p>
+		</div>
+		<div class="bondAccruedint">
+			<p>НКД:</p>
+		</div>
+	</div>
 	
-	<div id = "num"></div>
 	
 	
 	<script src="main.js"></script>
