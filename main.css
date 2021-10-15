@@ -1,7 +1,26 @@
+
 .bond {
     display: flex;
 }
+
 .bond div {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.bond_selection {
+    margin-left: 2%;
+    margin-top: 10%;
+}
+
+.numberOfBonds {
+    margin-left: 2%;
+}
+
+.calculator {
+    display: flex;
+    
+}
+.calculator div {
     margin-left: 2%;
     margin-right: 2%;
 }

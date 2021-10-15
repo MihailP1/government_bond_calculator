@@ -2,7 +2,7 @@
 let bondData;
 
 let bonds = [];
-// [bondId, bondMatDate, bondAccruedint, bondYield, bondPrice, systemTime]
+// [bondId, bondMatDate, bondAccruedint, bondYield, bondPrice, systemTime, yearsToMat]
 
 
 
@@ -38,7 +38,10 @@ function setBondData(stock){
                 break;
             }
         }
-        
+        let systemDate = new Date(bonds[i][5].slice(0, 10));
+        let matDate = new Date(bonds[i][1]);
+        let daysToMat = Math.floor((matDate.getTime() - systemDate.getTime())/(1000*60*60*24));
+        bonds[i][6] = daysToMat/365;
     }
     
     bonds.sort(function (a, b) {
@@ -59,7 +62,7 @@ function setBondData(stock){
 
 
 
-let duration;
+
 
 function createSelect() {
     let select = document.getElementById('mat_date');
@@ -70,8 +73,9 @@ function createSelect() {
         select.appendChild(option);
 
     }
-    console.log("select");
+    
     changeBond();
+    
 }
 
 
@@ -79,14 +83,25 @@ function createSelect() {
 function changeBond() {
 
     let selectedIndex = document.getElementById("mat_date").options.selectedIndex;
-    console.log(selectedIndex);
+  
 
     let id = document.getElementById("id");
     if(id != null) id.remove();
 
     let yield = document.getElementById("yield");
     if(yield != null) yield.remove();
+
+    let matDate = document.getElementById("matDate");
+    if(matDate != null) matDate.remove();
+
+    let price = document.getElementById("price");
+    if(price != null) price.remove();
     
+    let accrued = document.getElementById("accrued");
+    if(accrued != null) accrued.remove();
+
+    let years = document.getElementById("years");
+    if(years != null) years.remove();
 
     let bondId = document.getElementsByClassName("bondId");
     id = document.createElement("p");
@@ -99,9 +114,78 @@ function changeBond() {
     yield.innerHTML = bonds[selectedIndex][3];
     yield.setAttribute('id', 'yield');
     bondYield[0].appendChild(yield);
+
+    let bondMatDate = document.getElementsByClassName("bondMatDate");
+    matDate = document.createElement("p");
+    matDate.innerHTML = bonds[selectedIndex][1];
+    matDate.setAttribute('id', 'matDate');
+    bondMatDate[0].appendChild(matDate);
+
+    let bondPrice = document.getElementsByClassName("bondPrice");
+    price = document.createElement("p");
+    price.innerHTML = bonds[selectedIndex][4];
+    price.setAttribute('id', 'price');
+    bondPrice[0].appendChild(price);
+
+    let bondAccruedint = document.getElementsByClassName("bondAccruedint");
+    accrued = document.createElement("p");
+    accrued.innerHTML = bonds[selectedIndex][2];
+    accrued.setAttribute('id', 'accrued');
+    bondAccruedint[0].appendChild(accrued);
+
+    let yearsToMat = document.getElementsByClassName("yearsToMat");
+    years = document.createElement("p");
+    years.innerHTML = bonds[selectedIndex][6].toFixed(2);
+    years.setAttribute('id', 'years');
+    yearsToMat[0].appendChild(years);
+
+    changeNumberOfBonds();
+
 }
 
+function changeNumberOfBonds() {
 
+
+    let currentBondPrice = document.getElementById("price");
+    let accrued = document.getElementById("accrued");
+    let years = document.getElementById("years");
+    let yield = document.getElementById("yield");
+    let fullYield = yield.innerHTML * years.innerHTML;
+    let bondPrice = 1000 * (currentBondPrice.innerHTML/100);
+    let price = bondPrice + +accrued.innerHTML;
+    let fullPrice = (price * numberOfBonds.value);
+    let fullIncome = (bondPrice * numberOfBonds.value) * (100 + fullYield)/100 + +accrued.innerHTML;
+    let finalProfit = fullIncome - fullPrice;
+
+    let capital = document.getElementById("capital");
+    if(capital != null) capital.remove();
+
+    let income = document.getElementById("income");
+    if(income != null) income.remove();
+
+    let profit = document.getElementById("profit");
+    if(profit != null) profit.remove();
+
+    let initialCapital = document.getElementsByClassName("initialCapital");
+    capital = document.createElement("p");
+    capital.innerHTML = fullPrice.toFixed(3);
+    capital.setAttribute('id', 'capital');
+    initialCapital[0].appendChild(capital);
+
+    let totalIncome = document.getElementsByClassName("totalIncome");
+    income = document.createElement("p");
+    income.innerHTML = fullIncome.toFixed(3);
+    income.setAttribute('id', 'income');
+    totalIncome[0].appendChild(income);
+
+    let profitContainer = document.getElementsByClassName("profitContainer");
+    profit = document.createElement("p");
+    profit.innerHTML = finalProfit.toFixed(3);
+    profit.setAttribute('id', 'profit');
+    profitContainer[0].appendChild(profit);
+
+
+}
 
   
 

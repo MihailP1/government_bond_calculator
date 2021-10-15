@@ -17,27 +17,46 @@
 </head>
  
 <body>
-	<h1></h1>
-	<p>Дата погашения:</p>
-	<select size="1" id="mat_date" onchange={changeBond()}>	</select>
+	<div class="bond_selection">
+		<p>Дата погашения:</p>
+		<select size="1" id="mat_date" onchange={changeBond()}>	</select>
+	</div>
+	
 	<div class="bond">
 		<div class="bondId">
 			<p>ID облигации:</p>
 		</div>
 		<div class="bondYield">
-			<p>Доходность:</p>
+			<p>Доходность, %:</p>
 		</div>
 		<div class="bondMatDate">
 			<p>Дата погашения:</p>
 		</div>
 		<div class="bondPrice">
-			<p>Цена:</p>
+			<p>Цена облигации, %:</p>
 		</div>
 		<div class="bondAccruedint">
-			<p>НКД:</p>
+			<p>НКД, руб:</p>
+		</div>
+		<div class="yearsToMat">
+			<p>Лет до погашения:</p>
 		</div>
 	</div>
-	
+	<div class="numberOfBonds">
+		<p>Количество облигаций:</p>
+		<input type="number" min="1" value="1" id="numberOfBonds" oninput={changeNumberOfBonds()}>
+	</div>
+	<div class="calculator">
+		<div class="initialCapital">
+			<p>Начальный капитал:</p>
+		</div>
+		<div class="totalIncome">
+			<p>Суммарный доход:</p>
+		</div>
+		<div class="profitContainer">
+			<p>Прибыль:</p>
+		</div>
+	</div>
 	
 	
 	<script src="main.js"></script>
