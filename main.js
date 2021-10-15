@@ -154,7 +154,7 @@ function changeNumberOfBonds() {
     let bondPrice = 1000 * (currentBondPrice.innerHTML/100);
     let price = bondPrice + +accrued.innerHTML;
     let fullPrice = (price * numberOfBonds.value);
-    let fullIncome = (bondPrice * numberOfBonds.value) * (100 + fullYield)/100 + +accrued.innerHTML;
+    let fullIncome = (bondPrice * numberOfBonds.value) * (100 + fullYield)/100 + +accrued.innerHTML * numberOfBonds.value;
     let finalProfit = fullIncome - fullPrice;
 
     let capital = document.getElementById("capital");
