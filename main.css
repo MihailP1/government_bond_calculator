@@ -1,12 +1,29 @@
 
+body {
+    margin: 0;
+}
+
 .bond {
     display: flex;
+    
 }
 
 .bond div {
     margin-left: 2%;
     margin-right: 2%;
 }
+
+header {
+    display: flex;
+    background: #00a651;
+
+}
+
+header img {
+    width: 4%;
+    margin-left: 2%;
+}
+
 .bond_selection {
     margin-left: 2%;
     margin-top: 10%;
