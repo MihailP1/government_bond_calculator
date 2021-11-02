@@ -187,5 +187,12 @@ function changeNumberOfBonds() {
 
 }
 
+let ofzInfo = document.getElementById("ofz_info_button");
+ofzInfo.addEventListener("click", popupHandler);
+let popupInfo = document.getElementById("ofz_info_popup");
+function popupHandler() {
+    popupInfo.style.display = "block";
+    document.body.style["background-color"] = "rgba(0,0,0,.7)";
+}
   
 

@@ -39,9 +39,39 @@ header h1 {
     
 }
 
+.ofz_info_button {
+    margin-left: 2%; 
+    margin-top: 4%;
+    font-weight: bold;
+    font-size: 23px;
+}
+
+.ofz_info_button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.ofz_info_popup {
+    display: none;
+    position: absolute;
+    width: 700px;
+    top: 25%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    padding-left: 2%;
+    padding-right: 2%;
+    background: #00a651;
+    color: #000;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 20px;
+    
+}
+
 .bond_selection {
     margin-left: 2%;
-    margin-top: 5%;
+    margin-top: 1%;
 }
 
 .numberOfBonds {
