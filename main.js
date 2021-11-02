@@ -194,5 +194,10 @@ function popupHandler() {
     popupInfo.style.display = "block";
     document.body.style["background-color"] = "rgba(0,0,0,.7)";
 }
+
+function closeModalWindow() {
+    popupInfo.style.display = "none";
+    document.body.style["background-color"] = "#fff";
+}
   
 
