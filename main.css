@@ -52,7 +52,7 @@ header h1 {
 }
 
 .ofz_info_popup {
-    display: none;
+    
     position: absolute;
     width: 700px;
     top: 25%;
@@ -67,6 +67,35 @@ header h1 {
     text-align: center;
     font-size: 20px;
     
+}
+
+.modal_button {
+    cursor: pointer;
+    margin-bottom: 2%;
+    width: 20%;
+    height: 30px;
+    border-radius: 5px;
+    border: transparent;
+    background: #028d45;
+
+}
+
+.modal_button:hover {
+    background: #03da6b;
+}
+
+.modal_button:active {
+    background: #06ff7f;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.7);
 }
 
 .bond_selection {
