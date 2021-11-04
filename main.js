@@ -189,17 +189,24 @@ function changeNumberOfBonds() {
 
 let ofzInfo = document.getElementById("ofz_info_button");
 ofzInfo.addEventListener("click", openModalWindow);
-let popupInfo = document.getElementById("ofz_info_popup");
+let modalWindow = document.getElementById("modal-window");
 let modalOverlay = document.getElementById("modal-overlay");
 function openModalWindow() {
     
-    modalOverlay.style.display = "block";
+    modalOverlay.style["z-index"] = "2";
+    modalOverlay.style.opacity = "1";
+    
+    modalWindow.style.transform = "translateY(100px)";
     
 }
 
 function closeModalWindow() {
+    modalWindow.style.transform = "translateY(-200px)";
+    setTimeout(() => {
+        modalOverlay.style.opacity = "0";
+        modalOverlay.style["z-index"] = "-1";
+    }, 700);
     
-    modalOverlay.style.display = "none";
 }
   
 
