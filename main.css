@@ -42,13 +42,22 @@ header h1 {
 .ofz_info_button {
     margin-left: 2%; 
     margin-top: 4%;
-    font-weight: bold;
+    
     font-size: 23px;
+    width: 210px;
+    height: 35px;
+    background: #04b65a;
+    border: transparent;
+    border-radius: 5px;
 }
 
 .ofz_info_button:hover {
-    text-decoration: underline;
+    background: #03da6b;
     cursor: pointer;
+}
+
+.ofz_info_button:active {
+    background: #06ff7f;
 }
 
 .modal-window {
