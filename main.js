@@ -202,10 +202,11 @@ function openModalWindow() {
 
 function closeModalWindow() {
     modalWindow.style.transform = "translateY(-200px)";
+    modalOverlay.style.opacity = "0";
     setTimeout(() => {
-        modalOverlay.style.opacity = "0";
+        
         modalOverlay.style["z-index"] = "-1";
-    }, 700);
+    }, 500);
     
 }
   
