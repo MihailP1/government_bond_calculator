@@ -42,13 +42,13 @@ header h1 {
 .ofz_info_button {
     margin-left: 2%; 
     margin-top: 4%;
-    
     font-size: 23px;
     width: 210px;
     height: 35px;
     background: #04b65a;
-    border: transparent;
     border-radius: 5px;
+    border-style: none;
+    box-shadow: 0 3px 2px #000;
 }
 
 .ofz_info_button:hover {
